@@ -1,0 +1,21 @@
+.row
+  = form_for @accessory do |f|
+    - if @accessory.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@accessory.errors.count, "error")} prohibited this accessory from being saved:"
+        %ul
+          - @accessory.errors.full_messages.each do |message|
+            %li= message
+    .col.s12
+      .row
+        .input-field.col.s8
+          %i.material-icons.prefix> mode_edit
+          %label アクセサリー名
+          = f.text_field :title
+        .input-field.col.s8
+          %i.material-icons.prefix> mode_edit
+          %label 説明
+          = f.text_area :description, class: 'materialize-textarea'
+      %button.btn.waves-effect.waves-light{ name: "action", type: "submit" }
+        %i.material-icons.left>send
+        登録

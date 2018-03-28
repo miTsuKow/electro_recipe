@@ -61,6 +61,7 @@ config/setting.yml
 /public/packs
 /public/packs-test
 /node_modules
+/test
 yarn-debug.log*
 .yarn-integrity
 .byebug_history

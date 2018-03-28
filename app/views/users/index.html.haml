@@ -1,3 +1,10 @@
 .container
-  %h3 ようこそ！
-  %span さっそくレシピを登録してみよう
+  .row
+    %h2 ようこそ！
+    .col.s12
+      %span さっそくレシピを登録してみよう
+  %br
+  = link_to new_accessory_path do
+    .waves-effect.waves-light.btn
+      %i.material-icons.left> create
+      レシピを登録する
