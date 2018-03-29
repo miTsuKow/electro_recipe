@@ -19,21 +19,13 @@
           %label 説明
           = f.text_area :description, class: 'materialize-textarea'
     .col.s12
-      = f.fields_for :materials do |f|
-        .row
-          .s12
-            %h5 材料情報
-          .input-field.col.s4
-            %i.material-icons.prefix> mode_edit
-            %label 材料名
-            = f.text_field :name
-          .input-field.col.s2
-            %i.material-icons.prefix> mode_edit
-            %label 数量
-            = f.text_field :quantity
-          .input-field.col.s2
-            %label 単位
-            = f.text_field :unit
+      .row
+        .s12
+          %h5 材料情報
+          = f.fields_for :materials do |f|
+            = render 'material_fields', f: f
+        .col.s12
+          = link_to_add_association '材料追加', f, :materials, :class => 'teal-text accent-3 white btn waves-effect waves-light'
 
     .col.s12.add-form.mt-bottom__20
       .row
