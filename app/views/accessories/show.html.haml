@@ -1,12 +1,12 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @hoge.name
-%p
-  %b Age:
-  = @hoge.age
-
-= link_to 'Edit', edit_hoge_path(@hoge)
-\|
-= link_to 'Back', hoges_path
+.container
+  .col.s12
+    %p#notice= notice
+  .col.s4
+    %p
+      %h4
+        = @accessory.title
+    %p
+      = @accessory.description
+    = link_to 'Edit', edit_accessory_path(@accessory)
+    \|
+    = link_to 'Back', accessories_path

@@ -16,12 +16,20 @@ class AccessoriesController < ApplicationController
 
   def  create
     @accessory = Accessory.new(accessory_params)
+    if @accessory.save(accessory_params)
+      flash[:notice] = 'レシピを登録しました👏'
+      redirect_to @accessory
+    else
+      render :new
+    end
+
   end
 
   def update
     respond_to do |format|
       if @accessory.update(accessory_params)
-        format.html { redirect_to @accessory, notice: 'accessory was successfully updated.' }
+        flash[:notice] = 'レシピを更新しました👏'
+        format.html { redirect_to @accessory }
       else
         format.html { render :edit }
       end
@@ -44,8 +52,9 @@ class AccessoriesController < ApplicationController
   end
 
   def accessory_params
-    params.require(:accessory).permit(:name, :age)
+    params.require(:accessory).permit(:id, :user_id, :title, :description,
+                                      recipe_attributes: [:id, :accessory_id, :flow, :_destroy],
+                                      material_attributes: [:id, :accessory_id, :flow, :_destroy] )
   end
-
 
 end

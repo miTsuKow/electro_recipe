@@ -1,21 +1,20 @@
 .container
-  %h3 電子アクセサリー一覧
-  %span みんなが作ったアクセサリーをみてみよう！
+  .row
+    .col.s12
+      %h3 電子アクセサリー一覧
+      %span みんなが作ったアクセサリーをみてみよう！
 
-  %table
-    %thead
-      %tr
-        %th Name
-        %th Age
-        %th
-        %th
-        %th
-
-    %tbody
-      - @accessories.each do |hoge|
-        %tr
-          %td= hoge.name
-          %td= hoge.age
-          %td= link_to 'Show', hoge
-          %td= link_to 'Edit', edit_accessory_path(hoge)
-          %td= link_to 'Destroy', hoge, method: :delete, data: { confirm: 'Are you sure?' }
+  .row
+    - @accessories.each do |accessory|
+      .col.s12.m4
+        .card.z-depth-4
+          .card-image
+            .card-box
+            %span.card-title
+              = accessory.title
+            %a.btn-floating.halfway-fab.waves-effect.waves-light.teal.accent-3
+              %i.material-icons star
+          .card-content
+            %p= accessory.description
+          .card-action
+            =link_to 'レシピをみる', accessory_path(accessory)
