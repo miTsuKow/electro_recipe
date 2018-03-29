@@ -8,6 +8,8 @@
             %li= message
     .col.s12
       .row
+        .s12
+          %h5 基本情報
         .input-field.col.s8
           %i.material-icons.prefix> mode_edit
           %label アクセサリー名
@@ -16,6 +18,28 @@
           %i.material-icons.prefix> mode_edit
           %label 説明
           = f.text_area :description, class: 'materialize-textarea'
+    .col.s12
+      = f.fields_for :materials do |f|
+        .row
+          .s12
+            %h5 材料情報
+          .input-field.col.s4
+            %i.material-icons.prefix> mode_edit
+            %label 材料名
+            = f.text_field :name
+          .input-field.col.s4
+            %i.material-icons.prefix> mode_edit
+            %label 数量
+            = f.text_field :quantity
+    .col.s12.add-form.mt-bottom__20
+      = f.fields_for :recipes do |f|
+        .row
+          .s12
+            %h5 作り方
+          = render 'recipe_fields', f: f
+      = link_to_add_association 'レシピ追加', f, :recipes, data: { association_insertion_method: 'after' }, :class => 'teal-text accent-3 white btn waves-effect waves-light'
+
+    .col.s12
       %button.btn.waves-effect.waves-light{ name: "action", type: "submit" }
         %i.material-icons.left>send
         登録
